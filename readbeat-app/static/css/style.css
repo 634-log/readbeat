@@ -1,0 +1,18 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f4e9d8;
+    font-family: "Hiragino Mincho ProN", serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  #display {
+    font-size: 1.2rem;
+    color: #333;
+    text-align: center;
+    padding: 2rem;
+  }
+  

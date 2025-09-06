@@ -6,16 +6,15 @@
   <title>本の一覧</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body>
-  <h1>本を選んでください</h1>
-  <ul>
-    {% for book in books %}
-      <li>
-        <a href="{{ url_for('read', filename=book.file) }}">
-          {{ book.title }}（{{ book.author }}）
-        </a>
-      </li>
-    {% endfor %}
-  </ul>
+
+<body class="index">
+  <div class="phone-view">
+    <h1>本を選んでください</h1>
+    <ul>
+      {% for book in books %}
+        <li><a href="{{ url_for('read', filename=book.file) }}">{{ book.title }}（{{ book.author }}）</a></li>
+      {% endfor %}
+    </ul>
+  </div>
 </body>
 </html>

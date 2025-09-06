@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     books = []
-    data_dir = os.path.join("static", "data")
+    data_dir = os.path.join(app.root_path, "static", "data")
     for filename in os.listdir(data_dir):
         if filename.endswith(".json"):
             path = os.path.join(data_dir, filename)

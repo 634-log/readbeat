@@ -6,13 +6,16 @@
   <title>リーダー</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body>
-  <div id="display">Loading...</div>
+
+<body class="reader">
+  <div class="phone-view">
+    <div id="display">Loading...</div>
+  </div>
 
   <script>
-    // Flaskから渡されたファイル名をJSに渡す
     const filename = "{{ filename }}";
   </script>
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
+

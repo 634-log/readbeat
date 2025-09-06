@@ -2,34 +2,43 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Hiragino Mincho ProN", serif;
-}
-
-/* PCのとき左右に帯を出す */
-body.index,
-body.reader {
-  background-color: #222;   /* 帯の色 */
-  min-height: 100vh;
+  background-color: #222;   /* PC表示時の左右帯 */
   display: flex;
   justify-content: center;
-  align-items: center;
+  overflow: hidden;         /* ← スクロール禁止でガタつき防止 */
 }
 
-/* スマホ画面エリア */
+/* スマホ画面エリア（共通） */
 .phone-view {
   width: 100%;
   max-width: 480px;
-  min-height: 100vh;
   background-color: #f4e9d8; /* セピア色 */
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  box-shadow: 0 0 20px rgba(0,0,0,0.3); /* 見やすく影 */
-  padding: 2.0rem;             /* ← 内側の余白を追加 */
+  padding: 2rem;
+  box-sizing: border-box;   /* padding込みで高さを計算 */
 }
 
+/* TOPページ */
+body.index .phone-view {
+  height: auto;             /* コンテンツの高さに合わせる */
+  min-height: var(--vh);    /* 画面より短くならない */
+  justify-content: center;  /* 少ないときは中央に */
+  overflow-y: auto;         /* 本が増えたらスクロール可能に */
+}
+
+/* リーダーページ */
+body.reader .phone-view {
+  height: var(--vh);         /* 画面の高さに固定 */
+  justify-content: center;   /* ← 縦中央に変更 */
+  align-items: center;       /* 横中央 */
+}
+
+/* 本文表示部分 */
 #display {
-  max-width: 32ch;   /* 32文字分で折り返す */
-  line-height: 1.8;  /* 行間を広めに */
+  max-width: 32ch;   /* 1行あたり文字数を制限 */
+  line-height: 1.8;  /* 行間 */
   text-align: left;  /* 左揃え */
 }

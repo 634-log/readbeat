@@ -33,10 +33,11 @@ body.index .phone-view {
 body.reader .phone-view {
   height: var(--vh);
   display: flex;
-  justify-content: center;   /* 縦方向中央に領域を配置 */
-  align-items: center;       /* 横方向中央に領域を配置 */
+  justify-content: center;
+  align-items: center;
   padding: 0;
   box-sizing: border-box;
+  position: relative; /* ← 追加：子要素のabsolute基準にする */
 }
 
 /* 本文表示部分 */
@@ -60,4 +61,44 @@ body.reader .phone-view {
   display: block;
   margin-bottom: 1.2rem;
   text-align: left;
+}
+
+/* 進捗バー全体 */
+#story-progress {
+  position: absolute;   /* 本文と独立させる */
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  gap: 4px;             /* バー同士の隙間 */
+  padding: 8px 12px;    /* 上下余白 */
+  box-sizing: border-box;
+}
+/* 各バー */
+.story-bar {
+  flex: 1;
+  height: 4px;
+  background: rgba(0,0,0,0.1); /* 薄いグレー背景 */
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+/* バーの塗りつぶし */
+.story-bar-fill {
+  height: 100%;
+  width: 0%;                /* JSで伸びる */
+  background: #000;         /* 黒塗り */
+  transition: width 0.2s linear;
+}
+
+/* 進捗％：画面右下に固定 */
+#progress-percent {
+  position: absolute;
+  bottom: 12px;
+  right: 16px;
+  font-size: 0.9rem;
+  color: #333;
+  opacity: 0.8;
+  padding: 2px 6px;
+  border-radius: 4px;
 }

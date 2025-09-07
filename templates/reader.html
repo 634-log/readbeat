@@ -8,14 +8,25 @@
 </head>
 
 <body class="reader">
-  <div class="phone-view">
-    <div id="display">Loading...</div>
+<div class="phone-view">
+  <!-- 進捗バー -->
+  <div id="story-progress">
+    <div class="story-bar"><div class="story-bar-fill"></div></div>
   </div>
 
+  <!-- 本文 -->
+  <div id="display">Loading...</div>
+
+  <!-- 進捗％（右下固定） -->
+  <div id="progress-percent">0%</div>
+</div>
+  <!-- JS -->
   <script>
     const filename = "{{ filename }}";
   </script>
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/progress.js') }}"></script>
 </body>
 </html>
+
 

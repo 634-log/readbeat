@@ -25,6 +25,17 @@ window.addEventListener('orientationchange', updateViewportHeight);
 function showSentence(index) {
   const display = document.getElementById("display");
   display.textContent = sentences[index] || "";
+
+  // 進捗バー更新
+  const progress = (index + 1) / sentences.length;
+  updateStoryProgress(0, progress); // 仮に「1章＝全文」として進捗率更新
+
+  // 進捗％の更新（小数点1桁表示）
+const percent = progress * 100;
+const percentEl = document.getElementById("progress-percent");
+if (percentEl) {
+  percentEl.textContent = percent.toFixed(1) + "%";
+}
 }
 
 // ------------------------------
@@ -35,7 +46,11 @@ function loadBook() {
     .then((response) => response.json())
     .then((data) => {
       sentences = data.sentences;
-      currentIndex = 0; // 読み始めは最初から
+      currentIndex = 0;
+
+      // 進捗バー初期化（今は「全文＝1章」として1本だけ生成）
+      initStoryProgress(1);
+
       showSentence(currentIndex);
     })
     .catch((err) => {

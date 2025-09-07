@@ -9,10 +9,12 @@
 
 <body class="index">
   <div class="phone-view">
-    <h1>本を選んでください</h1>
+    <h1>TOP本を選ぶ画面</h1>
     <ul>
       {% for book in books %}
-        <li><a href="{{ url_for('read', filename=book.file) }}">{{ book.title }}（{{ book.author }}）</a></li>
+       <li><a href="{{ url_for('read', name=book.file.replace('.json','')) }}">
+  {{ book.title }}（{{ book.author }}）
+</a></li>
       {% endfor %}
     </ul>
   </div>

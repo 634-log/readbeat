@@ -21,8 +21,9 @@ def index():
     return render_template("index.html", books=books)
 
 # 選んだ本を読むページ
-@app.route("/read/<filename>")
-def read(filename):
+@app.route("/read/<name>")
+def read(name):
+    filename = f"{name}.json"
     return render_template("reader.html", filename=filename)
 
 if __name__ == "__main__":
